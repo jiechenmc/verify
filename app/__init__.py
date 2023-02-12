@@ -48,6 +48,9 @@ async def root():
         },
         401: {
             "description": "Failed to authorize with the information provided"
+        },
+        422: {
+            "description": "Invalid JSON request"
         }
     })
 async def verify_user(uid: str = Header(default=None),
