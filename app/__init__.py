@@ -2,7 +2,7 @@ import os
 from fastapi import FastAPI
 from dotenv import load_dotenv
 from app.core.model import TokenCreationResponseModel
-from fastapi import Response
+from fastapi.responses import RedirectResponse
 
 description = \
 """
@@ -15,6 +15,9 @@ app = FastAPI(
     swagger_ui_parameters={"defaultModelsExpandDepth": -1},
 )
 
+@app.get("/", include_in_schema=False)
+async def root():
+    return RedirectResponse("/docs")
 
 @app.get("/verify",
          response_model=None,
