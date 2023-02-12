@@ -1,15 +1,21 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+from fastapi import Header
 
 
 class TokenCreationResponseModel(BaseModel):
-    v_token: str
+    vToken: str = Field(title="Generated vToken")
 
     class Config:
         schema_extra = {
             "example": {
                 "vToken": "..."
             },
-            "headers": {
-                "Test": "Boo"
-            }
+        }
+
+
+class VerifyOut(BaseModel):
+
+    class Config:
+        schema_extra = {
+            "example": "null",
         }
