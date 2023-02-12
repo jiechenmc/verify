@@ -53,8 +53,8 @@ async def root():
             "description": "Invalid JSON request"
         }
     })
-async def verify_user(uid: str = Header(default=None),
-                      vtoken: str = Header(default=None)):
+async def verify_user(X_UID: str = Header(default=None),
+                      X_VTOKEN: str = Header(default=None)):
     return JSONResponse(content="null")
 
 
